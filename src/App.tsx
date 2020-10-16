@@ -13,7 +13,7 @@ const initialTodos: Array<Todo> = [
   },
   {
     title: "facial hair",
-    description: "Full, thich and square.",
+    description: "Full, thick and square.",
     complete: false,
   },
   {
@@ -33,7 +33,7 @@ const initialTodos: Array<Todo> = [
   },
   {
     title: "friends",
-    description: "One to three is sufficient",
+    description: "One to three is sufficient.",
     complete: false,
   },
 ];
