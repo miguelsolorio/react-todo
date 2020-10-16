@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AddTodoForm } from "./AddTodoForm";
 import { TodoList } from "./TodoList";
 
 const initialTodos: Array<Todo> = [
@@ -25,10 +26,16 @@ const App: React.FC = () => {
     setTodos(newTodos);
   };
 
+  const addTodo: AddTodo = (newTodo) => {
+    newTodo.trim() !== "" &&
+      setTodos([...todos, { description: newTodo, complete: false }]);
+  };
+
   return (
     <React.Fragment>
       <h1>Todo list of greatness</h1>
       <TodoList todos={todos} toggleTodo={toggleTodoAction} />
+      <AddTodoForm addTodo={addTodo}></AddTodoForm>
     </React.Fragment>
   );
 };
