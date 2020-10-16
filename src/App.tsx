@@ -1,7 +1,7 @@
-import React from "react";
-import { TodoListItem } from "./TodoListItem";
+import React, { useState } from "react";
+import { TodoList } from "./TodoList";
 
-const todos: Array<Todo> = [
+const initialTodos: Array<Todo> = [
   { description: "frankness", complete: true },
   { description: "capitalism", complete: false },
   { description: "facial hair", complete: false },
@@ -10,14 +10,25 @@ const todos: Array<Todo> = [
 ];
 
 const App: React.FC = () => {
+  const [todos, setTodos] = useState(initialTodos);
+
+  const toggleTodoAction: ToggleTodo = (selectedTodo) => {
+    const newTodos = todos.map((todo) => {
+      if (todo === selectedTodo) {
+        return {
+          ...todo,
+          complete: !todo.complete,
+        };
+      }
+      return todo;
+    });
+    setTodos(newTodos);
+  };
+
   return (
     <React.Fragment>
       <h1>Todo list of greatness</h1>
-      <TodoListItem todo={todos[0]} />
-      <TodoListItem todo={todos[1]} />
-      <TodoListItem todo={todos[2]} />
-      <TodoListItem todo={todos[3]} />
-      <TodoListItem todo={todos[4]} />
+      <TodoList todos={todos} toggleTodo={toggleTodoAction} />
     </React.Fragment>
   );
 };
