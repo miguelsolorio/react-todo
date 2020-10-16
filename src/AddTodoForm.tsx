@@ -17,10 +17,16 @@ export const AddTodoForm: React.FC<AddTodoFormProps> = ({ addTodo }) => {
     setNewTodo("");
   };
 
+  const enableButton = () => {
+    if (!newTodo) {
+      return true;
+    }
+  };
+
   return (
     <form>
       <input type="text" value={newTodo} onChange={handleChange} />
-      <button type="submit" onClick={handleSubmit}>
+      <button type="submit" onClick={handleSubmit} disabled={enableButton()}>
         Add Todo
       </button>
     </form>

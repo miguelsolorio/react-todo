@@ -1,3 +1,28 @@
-.complete {
+label {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+label input {
+  margin-right: 8px;
+}
+
+.complete .title {
   text-decoration: line-through;
+}
+
+.title {
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  padding-top: 2px;
+  font-size: 13px;
+  opacity: 0.4;
 }

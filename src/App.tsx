@@ -1,13 +1,41 @@
 import React, { useState } from "react";
 import { AddTodoForm } from "./AddTodoForm";
 import { TodoList } from "./TodoList";
+import "./App.css";
+import head from "./swanson.png";
 
 const initialTodos: Array<Todo> = [
-  { description: "frankness", complete: true },
-  { description: "capitalism", complete: false },
-  { description: "facial hair", complete: false },
-  { description: "living in the woods", complete: false },
-  { description: "rage", complete: false },
+  { title: "frankness", description: "cut the B.S.", complete: true },
+  {
+    title: "capitalism",
+    description: "God's way of determining who is smart, and who is poor.",
+    complete: false,
+  },
+  {
+    title: "facial hair",
+    description: "Full, thich and square.",
+    complete: false,
+  },
+  {
+    title: "living in the woods",
+    description: "Live off the land.",
+    complete: false,
+  },
+  {
+    title: "rage",
+    description: "One rage every three months is premitted.",
+    complete: false,
+  },
+  {
+    title: "crying",
+    description: "Acceptable at funerals and the Grand Canyon.",
+    complete: false,
+  },
+  {
+    title: "friends",
+    description: "One to three is sufficient",
+    complete: false,
+  },
 ];
 
 const App: React.FC = () => {
@@ -18,6 +46,7 @@ const App: React.FC = () => {
       if (todo === selectedTodo) {
         return {
           ...todo,
+          description: todo.description,
           complete: !todo.complete,
         };
       }
@@ -28,14 +57,20 @@ const App: React.FC = () => {
 
   const addTodo: AddTodo = (newTodo) => {
     newTodo.trim() !== "" &&
-      setTodos([...todos, { description: newTodo, complete: false }]);
+      setTodos([
+        ...todos,
+        { title: newTodo, description: "false", complete: false },
+      ]);
   };
 
   return (
     <React.Fragment>
-      <h1>Todo list of greatness</h1>
-      <TodoList todos={todos} toggleTodo={toggleTodoAction} />
-      <AddTodoForm addTodo={addTodo}></AddTodoForm>
+      <div id="container">
+        <img id="head" src={head} alt="Ron Swanson's head" />
+        <h1>Swanson List of Greatness</h1>
+        <TodoList todos={todos} toggleTodo={toggleTodoAction} />
+        <AddTodoForm addTodo={addTodo}></AddTodoForm>
+      </div>
     </React.Fragment>
   );
 };
